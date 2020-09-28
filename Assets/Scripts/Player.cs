@@ -33,7 +33,7 @@ public class Player : MonoBehaviour
                 return;
             }
             stepsRemaining--;
-            EventsSystem.PlayerMoved(stepsRemaining);
+            EventsSystem.StepsChanged(stepsRemaining);
         }
         if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
         {
@@ -44,7 +44,7 @@ public class Player : MonoBehaviour
                 return;
             }
             stepsRemaining--;
-            EventsSystem.PlayerMoved(stepsRemaining);
+            EventsSystem.StepsChanged(stepsRemaining);
         }
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
@@ -55,7 +55,7 @@ public class Player : MonoBehaviour
                 return;
             }
             stepsRemaining--;
-            EventsSystem.PlayerMoved(stepsRemaining);
+            EventsSystem.StepsChanged(stepsRemaining);
         }
         if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
         {
@@ -66,14 +66,13 @@ public class Player : MonoBehaviour
                 return;
             }
             stepsRemaining--;
-            EventsSystem.PlayerMoved(stepsRemaining);
+            EventsSystem.StepsChanged(stepsRemaining);
         }
     }
 
     public void AddToSteps(int _stepsToAdd)
     {
-        // TODO: 
-        // EventsSystem.HandOffComplete();
         stepsRemaining += _stepsToAdd;
+        EventsSystem.StepsChanged(stepsRemaining);
     }
 }

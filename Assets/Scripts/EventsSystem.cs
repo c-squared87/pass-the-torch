@@ -2,26 +2,35 @@
 
 public static class EventsSystem
 {
-    public delegate void OnPlayerMoved(int _numberOfStepsRemaining);
-    static event OnPlayerMoved onPlayerMoved;
 
-    public static void ADD_PlayerMovedListener(EventsSystem.OnPlayerMoved _method)
+    /**
+        INDEX:
+
+        OnStepsChanged
+        OnGameLose
+        OnGameWin
+        OnBroadcastMessage
+        OnPlayerSuccess
+        OnPlayerFail
+    **/
+
+    public delegate void OnStepsChanged(int _numberOfStepsRemaining);
+    static event OnStepsChanged onStepsChanged;
+
+    public static void ADD_StepsChangedListener(EventsSystem.OnStepsChanged _method)
     {
-        onPlayerMoved += _method;
+        onStepsChanged += _method;
     }
-    public static void REMOVE_PlayerMovedListener(EventsSystem.OnPlayerMoved _method)
+    public static void REMOVE_StepsChangedListener(EventsSystem.OnStepsChanged _method)
     {
-        onPlayerMoved -= _method;
+        onStepsChanged -= _method;
     }
-    public static void PlayerMoved(int _numberOfStepsRemaining)
+    public static void StepsChanged(int _numberOfStepsRemaining)
     {
-        Debug.Log(_numberOfStepsRemaining + "Steps Left");
-        if (onPlayerMoved != null)
-        {
-            onPlayerMoved(_numberOfStepsRemaining);
-        }
+        if (onStepsChanged != null) { onStepsChanged(_numberOfStepsRemaining); }
     }
 
+    //====================================================================================
 
     public delegate void OnGameLose();
     static event OnGameLose onGameLose;
@@ -36,12 +45,10 @@ public static class EventsSystem
     }
     public static void GameLost()
     {
-        Debug.Log("GAME LOST");
-        if (onGameLose != null)
-        {
-            onGameLose();
-        }
+        if (onGameLose != null) { onGameLose(); }
     }
+
+    //====================================================================================
 
     public delegate void OnGameWin();
     static event OnGameWin onGameWin;
@@ -56,12 +63,64 @@ public static class EventsSystem
     }
     public static void GameWon()
     {
-        Debug.Log("GAME WON");
-        if (onGameWin != null)
-        {
-            onGameWin();
-        }
+        if (onGameWin != null) { onGameWin(); }
     }
 
-    /// TODO: HAND OFF SOUND
+    //====================================================================================
+
+    public delegate void OnBroadcastMessage(string _message);
+    static event OnBroadcastMessage onBroadcastMessage;
+
+    public static void ADD_BroadcastMessageListener(EventsSystem.OnBroadcastMessage _method)
+    {
+        onBroadcastMessage += _method;
+    }
+    public static void REMOVE_BroadcastMessageListener(EventsSystem.OnBroadcastMessage _method)
+    {
+        onBroadcastMessage -= _method;
+    }
+    public static void BroadcastMessage(string _message)
+    {
+        if (onBroadcastMessage != null) { onBroadcastMessage(_message); }
+    }
+
+    //==================================================================================== 
+
+    public delegate void OnPlayerSuccess();
+    static event OnPlayerSuccess onPlayerSuccess;
+
+    public static void ADD_PlayerSuccessListener(EventsSystem.OnPlayerSuccess _method)
+    {
+        onPlayerSuccess += _method;
+    }
+    public static void REMOVE_PlayerSuccessListener(EventsSystem.OnPlayerSuccess _method)
+    {
+        onPlayerSuccess -= _method;
+    }
+    public static void PlayerSuccess()
+    {
+        if (onPlayerSuccess != null) { onPlayerSuccess(); }
+    }
+
+    //====================================================================================
+
+    public delegate void OnPlayerFail();
+    static event OnPlayerFail onPlayerFail;
+
+    public static void ADD_PlayerFailListener(EventsSystem.OnPlayerFail _method)
+    {
+        onPlayerFail += _method;
+    }
+    public static void REMOVE_PlayerFailListener(EventsSystem.OnPlayerFail _method)
+    {
+        onPlayerFail -= _method;
+    }
+    public static void PlayerFail()
+    {
+        if (onPlayerFail != null) { onPlayerFail(); }
+    }
+
+    //====================================================================================
+
+
 }
