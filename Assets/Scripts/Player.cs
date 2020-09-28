@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
     private void Start()
     {
         levelManager = FindObjectOfType<LevelManager>();
+
+        transform.position = levelManager.LevelStartLocation;
     }
 
     private void Update()
