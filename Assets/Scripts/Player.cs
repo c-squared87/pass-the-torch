@@ -2,25 +2,71 @@
 
 public class Player : MonoBehaviour
 {
+    int stepsRemaining;
+    LevelManager levelManager;
+
+    private void Start()
+    {
+        levelManager = FindObjectOfType<LevelManager>();
+    }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+        if (stepsRemaining > 0)
         {
-            transform.Translate(Vector2.left);
-        }
-        if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            transform.Translate(Vector2.right);
-        }
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            transform.Translate(Vector2.up);
-        }
-        if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            transform.Translate(Vector2.down);
+            Move();
         }
     }
 
+    private void Move()
+    {
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            transform.position += Vector3.left;
+            if (levelManager.CanMove(transform.position))
+            {
+                return;
+            }
+            else
+            {
+                transform.position -= Vector3.left;
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            transform.position += Vector3.right;
+            if (levelManager.CanMove(transform.position))
+            {
+                return;
+            }
+            else
+            {
+                transform.position -= Vector3.right;
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            transform.position += Vector3.up;
+            if (levelManager.CanMove(transform.position))
+            {
+                return;
+            }
+            else
+            {
+                transform.position -= Vector3.up;
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            transform.position += Vector3.down;
+            if (levelManager.CanMove(transform.position))
+            {
+                return;
+            }
+            else
+            {
+                transform.position -= Vector3.down;
+            }
+        }
+    }
 }

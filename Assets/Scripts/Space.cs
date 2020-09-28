@@ -21,13 +21,17 @@ public class Space : MonoBehaviour
 
     SpriteRenderer spriteRenderer;
 
+    public Vector2 SpaceLocation { get; private set; }
+
     [SerializeField] SPACE_STATE currentSPACE_STATE = SPACE_STATE.OPEN;
 
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        SpaceLocation = gameObject.transform.position;
 
         SetSprite();
+        FindObjectOfType<LevelManager>().UpdateSpace(this);
     }
 
     void SetSprite()
