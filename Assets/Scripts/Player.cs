@@ -29,7 +29,8 @@ public class Player : MonoBehaviour
             transform.position += Vector3.left;
             if (!levelManager.CanMove(transform.position))
             {
-                transform.position -= Vector3.left;
+                transform.position -= Vector3.left; 
+                EventsSystem.PlayerFail();
                 return;
             }
             stepsRemaining--;
@@ -40,9 +41,11 @@ public class Player : MonoBehaviour
             transform.position += Vector3.right;
             if (!levelManager.CanMove(transform.position))
             {
-                transform.position -= Vector3.right;
+                transform.position -= Vector3.right; 
+                EventsSystem.PlayerFail();
                 return;
             }
+            Debug.Log(Time.time + "CLICK");
             stepsRemaining--;
             EventsSystem.StepsChanged(stepsRemaining);
         }
@@ -51,7 +54,8 @@ public class Player : MonoBehaviour
             transform.position += Vector3.up;
             if (!levelManager.CanMove(transform.position))
             {
-                transform.position -= Vector3.up;
+                transform.position -= Vector3.up; 
+                EventsSystem.PlayerFail();
                 return;
             }
             stepsRemaining--;
@@ -63,6 +67,7 @@ public class Player : MonoBehaviour
             if (!levelManager.CanMove(transform.position))
             {
                 transform.position -= Vector3.down;
+                EventsSystem.PlayerFail();
                 return;
             }
             stepsRemaining--;

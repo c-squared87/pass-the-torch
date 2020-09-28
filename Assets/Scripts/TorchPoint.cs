@@ -29,6 +29,7 @@ public class TorchPoint : MonoBehaviour
     public void HandOffTorch()
     {
         FindObjectOfType<Player>().AddToSteps(stepsValue);
+        EventsSystem.PlayerSuccess();
         Destroy(gameObject);
     }
 }
