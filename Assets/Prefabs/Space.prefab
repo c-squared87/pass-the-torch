@@ -96,4 +96,4 @@ MonoBehaviour:
   blockedSprite: {fileID: 0}
   startSprite: {fileID: 0}
   exitSpace: {fileID: 0}
-  currentSPACE_STATE: 1
+  currentSPACE_STATE: 0

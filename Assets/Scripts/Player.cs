@@ -2,7 +2,7 @@
 
 public class Player : MonoBehaviour
 {
-    int stepsRemaining;
+    int stepsRemaining = 3;
     LevelManager levelManager;
 
     private void Start()

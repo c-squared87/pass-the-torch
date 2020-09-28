@@ -8,6 +8,11 @@ public class LevelManager : MonoBehaviour
 
     public bool CanMove(Vector3 _locationToCheck)
     {
+        if (Spaces[_locationToCheck].currentSPACE_STATE == SPACE_STATE.OPEN)
+        {
+            Debug.Log(Spaces[_locationToCheck].SPACE_NAME);
+            return true;
+        }
         return false;
     }
 
@@ -17,7 +22,7 @@ public class LevelManager : MonoBehaviour
         {
             Spaces = new Dictionary<Vector3, Space>();
         }
-        Spaces[_space.SpaceLocation] = _space;
+        Spaces.Add(_space.SpaceLocation, _space);
     }
 
 }

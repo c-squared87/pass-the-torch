@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-enum SPACE_STATE
+public enum SPACE_STATE
 {
     OPEN,
     BLOCKED,
@@ -21,14 +21,17 @@ public class Space : MonoBehaviour
 
     SpriteRenderer spriteRenderer;
 
-    public Vector2 SpaceLocation { get; private set; }
+    public Vector3 SpaceLocation { get; private set; }
+    public string SPACE_NAME { get; private set; }
 
-    [SerializeField] SPACE_STATE currentSPACE_STATE = SPACE_STATE.OPEN;
+    public SPACE_STATE currentSPACE_STATE = SPACE_STATE.OPEN;
 
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         SpaceLocation = gameObject.transform.position;
+        SPACE_NAME = gameObject.transform.position.ToString();
+        gameObject.name = SPACE_NAME;
 
         SetSprite();
         FindObjectOfType<LevelManager>().UpdateSpace(this);
