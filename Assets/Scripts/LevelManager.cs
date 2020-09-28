@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,11 +10,50 @@ public class LevelManager : MonoBehaviour
 
     public Vector3 LevelStartLocation { get; private set; }
 
+    GameObject[] activeOnWin;
+    GameObject[] activeOnLoss;
+
+    private void OnEnable()
+    {
+        InitUI();
+
+        EventsSystem.ADD_GameLoseListener(LoseScreen);
+        EventsSystem.ADD_GameWinListener(WinScreen);
+    }
+
+    private void OnDisable()
+    {
+        EventsSystem.REMOVE_GameLoseListener(LoseScreen);
+        EventsSystem.REMOVE_GameWinListener(WinScreen);
+    }
+
+    private void InitUI()
+    {
+        activeOnWin = GameObject.FindGameObjectsWithTag("ActiveOnGameWon");
+        activeOnLoss = GameObject.FindGameObjectsWithTag("ActiveOnGameOver");
+
+        foreach (GameObject gameObject in activeOnWin) { gameObject.SetActive(false); }
+        foreach (GameObject gameObject in activeOnLoss) { gameObject.SetActive(false); }
+    }
+
+    private void WinScreen()
+    {
+        foreach (GameObject gameObject in activeOnWin) { gameObject.SetActive(true); }
+        FindObjectOfType<Player>().enabled = false;
+    }
+
+    private void LoseScreen()
+    {
+        foreach (GameObject gameObject in activeOnLoss) { gameObject.SetActive(true); }
+        FindObjectOfType<Player>().enabled = false;
+    }
+
     public bool CanMove(Vector3 _locationToCheck)
     {
-       if(TorchPoints.ContainsKey(_locationToCheck)){
-           TorchPoints[_locationToCheck].HandOffTorch();
-       }
+        if (TorchPoints.ContainsKey(_locationToCheck))
+        {
+            TorchPoints[_locationToCheck].HandOffTorch();
+        }
 
         if (Spaces[_locationToCheck].currentSPACE_STATE != SPACE_STATE.BLOCKED)
         {
