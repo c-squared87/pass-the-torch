@@ -16,6 +16,7 @@ public class TorchPoint : MonoBehaviour
 
     private void Start() {
         SetSprite();
+        TorchPointLocation = transform.position;
         FindObjectOfType<LevelManager>().UpdateTorchPoints(this);
     }
 
@@ -27,7 +28,7 @@ public class TorchPoint : MonoBehaviour
 
     public void HandOffTorch()
     {
-        // FindObjectOfType<Player>().AddToSteps(stepsValue);
+        FindObjectOfType<Player>().AddToSteps(stepsValue);
         Destroy(gameObject);
     }
 }

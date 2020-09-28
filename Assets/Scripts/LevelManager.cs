@@ -11,10 +11,9 @@ public class LevelManager : MonoBehaviour
 
     public bool CanMove(Vector3 _locationToCheck)
     {
-        if (TorchPoints[_locationToCheck] != null)
-        {
-            TorchPoints[_locationToCheck].HandOffTorch();
-        }
+       if(TorchPoints.ContainsKey(_locationToCheck)){
+           TorchPoints[_locationToCheck].HandOffTorch();
+       }
 
         if (Spaces[_locationToCheck].currentSPACE_STATE != SPACE_STATE.BLOCKED)
         {
@@ -40,6 +39,7 @@ public class LevelManager : MonoBehaviour
     {
         if (TorchPoints == null) { TorchPoints = new Dictionary<Vector3, TorchPoint>(); }
         TorchPoints.Add(_point.TorchPointLocation, _point);
+        Debug.Log(TorchPoints);
     }
 
 }

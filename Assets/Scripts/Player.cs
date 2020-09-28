@@ -75,7 +75,5 @@ public class Player : MonoBehaviour
         // TODO: 
         // EventsSystem.HandOffComplete();
         stepsRemaining += _stepsToAdd;
-
-        Debug.Log("added " + stepsRemaining);
     }
 }
