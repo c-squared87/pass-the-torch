@@ -12,10 +12,8 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (stepsRemaining > 0)
-        {
-            Move();
-        }
+        if (stepsRemaining <= 0) { EventsSystem.GameLost(); }
+        if (stepsRemaining > 0) { Move(); }
     }
 
     private void Move()
