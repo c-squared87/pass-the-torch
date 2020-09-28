@@ -2,7 +2,7 @@
 
 public class Player : MonoBehaviour
 {
-    int stepsRemaining = 6;
+    int stepsRemaining = 4;
     LevelManager levelManager;
 
     private void Start()
@@ -68,5 +68,14 @@ public class Player : MonoBehaviour
             stepsRemaining--;
             EventsSystem.PlayerMoved(stepsRemaining);
         }
+    }
+
+    public void AddToSteps(int _stepsToAdd)
+    {
+        // TODO: 
+        // EventsSystem.HandOffComplete();
+        stepsRemaining += _stepsToAdd;
+
+        Debug.Log("added " + stepsRemaining);
     }
 }
