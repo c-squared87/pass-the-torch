@@ -12,6 +12,7 @@ public class LevelManager : MonoBehaviour
     {
         if (Spaces[_locationToCheck].currentSPACE_STATE != SPACE_STATE.BLOCKED)
         {
+            if (Spaces[_locationToCheck].currentSPACE_STATE == SPACE_STATE.EXIT_SPACE) { EventsSystem.GameWon(); }
             return true;
         }
         return false;

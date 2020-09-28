@@ -1,4 +1,6 @@
-﻿public static class EventsSystem
+﻿using UnityEngine;
+
+public static class EventsSystem
 {
     public delegate void OnPlayerMoved(int _numberOfStepsRemaining);
     static event OnPlayerMoved onPlayerMoved;
@@ -13,6 +15,7 @@
     }
     public static void PlayerMoved(int _numberOfStepsRemaining)
     {
+        Debug.Log(_numberOfStepsRemaining + "Steps Left");
         if (onPlayerMoved != null)
         {
             onPlayerMoved(_numberOfStepsRemaining);
@@ -33,6 +36,7 @@
     }
     public static void GameLost()
     {
+        Debug.Log("GAME LOST");
         if (onGameLose != null)
         {
             onGameLose();
@@ -52,6 +56,7 @@
     }
     public static void GameWon()
     {
+        Debug.Log("GAME WON");
         if (onGameWin != null)
         {
             onGameWin();
