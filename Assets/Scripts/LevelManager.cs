@@ -82,4 +82,9 @@ public class LevelManager : MonoBehaviour
         TorchPoints.Add(_point.TorchPointLocation, _point);
     }
 
+    public void RemoveTorchPoint(TorchPoint _point)
+    {
+        TorchPoints.Remove(_point.TorchPointLocation);
+    }
+
 }
