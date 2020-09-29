@@ -5,8 +5,13 @@ public class Player : MonoBehaviour
     [SerializeField] int stepsRemaining = 4;
     LevelManager levelManager;
 
+    NumberDisplay numberDisplay;
+
     private void Start()
     {
+        numberDisplay = GetComponentInChildren<NumberDisplay>();
+        numberDisplay.InitNumberDisplay(stepsRemaining);
+
         levelManager = FindObjectOfType<LevelManager>();
 
         transform.position = levelManager.LevelStartLocation;
@@ -35,6 +40,7 @@ public class Player : MonoBehaviour
             }
             stepsRemaining--;
             EventsSystem.StepsChanged(stepsRemaining);
+            numberDisplay.SetNumberDisplay(stepsRemaining);
         }
         if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
         {
@@ -47,6 +53,7 @@ public class Player : MonoBehaviour
             }
             stepsRemaining--;
             EventsSystem.StepsChanged(stepsRemaining);
+            numberDisplay.SetNumberDisplay(stepsRemaining);
         }
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
@@ -59,6 +66,7 @@ public class Player : MonoBehaviour
             }
             stepsRemaining--;
             EventsSystem.StepsChanged(stepsRemaining);
+            numberDisplay.SetNumberDisplay(stepsRemaining);
         }
         if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
         {
@@ -71,6 +79,7 @@ public class Player : MonoBehaviour
             }
             stepsRemaining--;
             EventsSystem.StepsChanged(stepsRemaining);
+            numberDisplay.SetNumberDisplay(stepsRemaining);
         }
     }
 
@@ -78,5 +87,6 @@ public class Player : MonoBehaviour
     {
         stepsRemaining += _stepsToAdd;
         EventsSystem.StepsChanged(stepsRemaining);
+        numberDisplay.SetNumberDisplay(stepsRemaining);
     }
 }

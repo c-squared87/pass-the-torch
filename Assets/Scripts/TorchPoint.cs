@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
 public class TorchPoint : MonoBehaviour
@@ -10,11 +8,17 @@ public class TorchPoint : MonoBehaviour
 
     SpriteRenderer spriteRenderer;
 
+    NumberDisplay numberDisplay;
+
     public Vector3 TorchPointLocation;
     [SerializeField] int stepsValue;
     public bool Active = true;
 
-    private void Start() {
+    private void Start()
+    {
+        numberDisplay = GetComponentInChildren<NumberDisplay>();
+        numberDisplay.InitNumberDisplay(stepsValue);
+
         SetSprite();
         TorchPointLocation = transform.position;
         FindObjectOfType<LevelManager>().UpdateTorchPoints(this);
@@ -23,7 +27,6 @@ public class TorchPoint : MonoBehaviour
     void SetSprite()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.color = Color.magenta;
     }
 
     public void HandOffTorch()
