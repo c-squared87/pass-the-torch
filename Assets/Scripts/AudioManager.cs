@@ -49,8 +49,7 @@ public class AudioManager : MonoBehaviour
     private void FailSound() { Play("Fail"); }
     private void WinSound() { Play("Win"); }
     private void LoseSound() { Play("Lose"); }
-    private void StepSound(int _numberOfStepsRemaining) { Play("Step");
-        Debug.Log(Time.time + "setp"); }
+    private void StepSound(int _numberOfStepsRemaining) { Play("Step"); }
 
     void Play(string _soundToPlay)
     {

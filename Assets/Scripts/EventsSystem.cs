@@ -2,7 +2,6 @@
 
 public static class EventsSystem
 {
-
     /**
         INDEX:
 

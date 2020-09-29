@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelManager : MonoBehaviour
@@ -16,6 +14,9 @@ public class LevelManager : MonoBehaviour
     private void OnEnable()
     {
         InitUI();
+
+        if (TorchPoints == null) { TorchPoints = new Dictionary<Vector3, TorchPoint>(); }
+        if (Spaces == null) { Spaces = new Dictionary<Vector3, Space>(); }
 
         EventsSystem.ADD_GameLoseListener(LoseScreen);
         EventsSystem.ADD_GameWinListener(WinScreen);
@@ -50,14 +51,12 @@ public class LevelManager : MonoBehaviour
 
     public bool CanMove(Vector3 _locationToCheck)
     {
-        if (TorchPoints.ContainsKey(_locationToCheck))
-        {
-            TorchPoints[_locationToCheck].HandOffTorch();
-        }
+        if (TorchPoints.ContainsKey(_locationToCheck)) { TorchPoints[_locationToCheck].HandOffTorch(); }
 
         if (Spaces[_locationToCheck].currentSPACE_STATE != SPACE_STATE.BLOCKED)
         {
             if (Spaces[_locationToCheck].currentSPACE_STATE == SPACE_STATE.EXIT_SPACE) { EventsSystem.GameWon(); }
+            // Spaces[_locationToCheck].currentSPACE_STATE = SPACE_STATE.BLOCKED;
             return true;
         }
         return false;
@@ -72,14 +71,15 @@ public class LevelManager : MonoBehaviour
         }
 
         if (Spaces == null) { Spaces = new Dictionary<Vector3, Space>(); }
+
         Spaces.Add(_space.SpaceLocation, _space);
     }
 
     public void UpdateTorchPoints(TorchPoint _point)
     {
         if (TorchPoints == null) { TorchPoints = new Dictionary<Vector3, TorchPoint>(); }
+
         TorchPoints.Add(_point.TorchPointLocation, _point);
-        Debug.Log(TorchPoints);
     }
 
 }

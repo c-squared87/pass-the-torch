@@ -2,7 +2,7 @@
 
 public class Player : MonoBehaviour
 {
-    int stepsRemaining = 4;
+    [SerializeField] int stepsRemaining = 4;
     LevelManager levelManager;
 
     private void Start()
@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
             transform.position += Vector3.left;
             if (!levelManager.CanMove(transform.position))
             {
-                transform.position -= Vector3.left; 
+                transform.position -= Vector3.left;
                 EventsSystem.PlayerFail();
                 return;
             }
@@ -41,11 +41,10 @@ public class Player : MonoBehaviour
             transform.position += Vector3.right;
             if (!levelManager.CanMove(transform.position))
             {
-                transform.position -= Vector3.right; 
+                transform.position -= Vector3.right;
                 EventsSystem.PlayerFail();
                 return;
             }
-            Debug.Log(Time.time + "CLICK");
             stepsRemaining--;
             EventsSystem.StepsChanged(stepsRemaining);
         }
@@ -54,7 +53,7 @@ public class Player : MonoBehaviour
             transform.position += Vector3.up;
             if (!levelManager.CanMove(transform.position))
             {
-                transform.position -= Vector3.up; 
+                transform.position -= Vector3.up;
                 EventsSystem.PlayerFail();
                 return;
             }

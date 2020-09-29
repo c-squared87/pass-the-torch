@@ -1478,7 +1478,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xoffset: 0
   yoffset: 0
-  moveSpeed: 1
+  moveSpeed: 4
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
