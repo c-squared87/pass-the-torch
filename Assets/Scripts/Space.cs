@@ -42,10 +42,10 @@ public class Space : MonoBehaviour
         switch (currentSPACE_STATE)
         {
             case SPACE_STATE.OPEN:
-                spriteRenderer.color = Color.grey;
+                // spriteRenderer.color = Color.grey;
                 break;
             case SPACE_STATE.BLOCKED:
-                spriteRenderer.color = Color.red;
+                // spriteRenderer.color = Color.red;
                 break;
             case SPACE_STATE.START_SPACE:
                 spriteRenderer.color = Color.green;
