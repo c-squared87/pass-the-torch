@@ -23,6 +23,8 @@ public class Tutorial : MonoBehaviour
 
     public void AdvanceTutorial()
     {
+        player = FindObjectOfType<Player>();
+
         currentTutorialStep++;
         transform.position = StartPoints[currentTutorialStep].position;
         player.transform.position = transform.position;
@@ -36,6 +38,7 @@ public class Tutorial : MonoBehaviour
     }
 
     #region REPURPOSED LEVELMANAGER CODE BELOW
+
     public Dictionary<Vector3, Space> Spaces;
     public Dictionary<Vector3, TorchPoint> TorchPoints;
 
@@ -119,5 +122,6 @@ public class Tutorial : MonoBehaviour
     {
         TorchPoints.Remove(_point.TorchPointLocation);
     }
+    
     #endregion
 }
