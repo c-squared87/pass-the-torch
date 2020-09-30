@@ -11,6 +11,21 @@ public class LevelManager : MonoBehaviour
     GameObject[] activeOnWin;
     GameObject[] activeOnLoss;
 
+    /*
+    EACH LEVEL HAS A NUMBER
+    - FIND A WAY TO READ THE NAME OF THE SCENE?
+
+    EACH LEVEL IS AN ARRAY OF STRINGS
+    LEVELS <BOOL, STRING[]>
+
+    |-WORLD
+    |---LEVEL
+    
+    LEVELS WRAPPED - ACTIVE TOGGLE
+    ON INIT LOADS FROM STRING AND MOVES PLAYER 
+
+    */
+
     private void OnEnable()
     {
         InitUI();
