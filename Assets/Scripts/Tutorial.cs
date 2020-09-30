@@ -38,8 +38,8 @@ public class Tutorial : MonoBehaviour
         currentTutorialStep = 0;
 
         playerItem.SetActive(false);
-        // exitItem.SetActive(false);
-        // torchItem.SetActive(false);
+        exitItem.SetActive(false);
+        torchItem.SetActive(false);
 
         newGameButton.SetActive(false);
         mainMenuButton.SetActive(false);
@@ -52,6 +52,25 @@ public class Tutorial : MonoBehaviour
     public void AdvanceTutorial() // THIS IS CALLED FROM A SCREEN COVERING UI BUTTON
     {
         currentTutorialStep++;
+
+        switch (currentTutorialStep)
+        {
+            case 1:
+                exitItem.SetActive(true);
+                break;
+            case 2:
+                torchItem.SetActive(true);
+                break;
+            case 3:
+                exitItem.SetActive(false);
+                torchItem.SetActive(false);
+
+                newGameButton.SetActive(true);
+                mainMenuButton.SetActive(true);
+                clickthroughButton.SetActive(false);
+                break;
+        }
+
         UpdateUI();
     }
 
