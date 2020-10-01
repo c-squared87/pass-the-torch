@@ -5634,7 +5634,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 540c8430eb59c48f4a0e90f61e259f9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: MAIN_MENU
+  sceneToLoad: LEVEL_SELECT
 --- !u!114 &2266561592971621101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6099,7 +6099,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 540c8430eb59c48f4a0e90f61e259f9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: MAIN_MENU
+  sceneToLoad: LEVEL_SELECT
 --- !u!1 &2266561593685286827
 GameObject:
   m_ObjectHideFlags: 0
